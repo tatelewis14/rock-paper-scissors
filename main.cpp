@@ -1,11 +1,3 @@
-/******************************************************************************
-
-                              Online C++ Compiler.
-               Code, Compile, Run and Debug C++ program online.
-Write your code in this editor and press "Run" button to compile and execute it.
-
-*******************************************************************************/
-
 #include <iostream>
 #include<string>
 #include <cctype>
@@ -35,38 +27,44 @@ void askMove(std::string &move)
     return responses[randomIndex];  // Return the randomly selected response
 }
 
-bool playerWon(std::string userMove, std::string computerMove)
+std::string playerWon(std::string userMove, std::string computerMove)
 {
     if(userMove == computerMove) {
-        return false;
+        return "tied";
     }
     if(userMove == "rock" && computerMove == "scissors") {
-        return true;
+        return "won";
     }
     
     if(userMove == "paper" && computerMove == "rock") {
-        return true;
+        return "won";
     }
     if(userMove == "scissors" && computerMove == "paper") {
-        return true;
+        return "won";
     }
-    return false;
+    return "lost";
     
 }
 
-int main()
-{
+void game() {
     std::string playerMove;
     askMove(playerMove);
     std::cout << "You played the move: " << playerMove << std::endl; 
     std::string compMove = getRandomResponse();
     std::cout << "Computer played the move: " << compMove<<std::endl;
-    if(playerWon(playerMove, compMove)) {
-        std::cout << "Player won!" << std::endl;
-        return 0;
-    }
-    std::cout << "Player lost!" << std::endl;
-   
+    std::cout <<"You "<<playerWon(playerMove, compMove) << "!"<< std::endl;
+}
+
+
+int main()
+{
+    
+    game();
+    bool playing = true;
+    
+   while(playing) {
+       game();
+   }
    
     
     return 0;
