@@ -1,9 +1,10 @@
-#include <iostream>
+#include<iostream>
 #include<string>
-#include <cctype>
+#include<cctype>
 #include<vector>
-#include <cstdlib>
-#include <ctime> 
+#include<cstdlib>
+#include<ctime> 
+
 
 
 void askMove(std::string &move)
@@ -58,12 +59,16 @@ void game() {
 
 int main()
 {
-    
-    game();
     bool playing = true;
     
    while(playing) {
        game();
+       std::cout << "Do you want to play again?[y/n]" << std::endl;
+       char answer;
+       std::cin >> answer;
+       if(!std::cin.fail() && answer=='n') {
+           return 0;
+       }
    }
    
     
